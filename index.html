@@ -8,13 +8,9 @@
 </head>
 <body>
     <h1>Hangman</h1>
-    <p>Guess the word - Enter a word.</p>
+    <p>Guess the word - Enter a letter</p>
 
     <div class="game-container">
-        <div class="wrong-letters-container">
-            <div class="wrong-letters">Wrong letters</div>
-        </div>
-
         <svg height="350" width="300" class="figure-container">
             <!-- Stand Rods -->
             <line x1="60" y1="20" x2="200" y2="20"></line>
@@ -53,13 +49,67 @@
             <line x1="200" y1="250" x2="240" y2="290" class="win-figure"></line>
         </svg>
 
-        <div class="word" id="word">Word</div>
+        <div class="genere" id="genere">Animal:</div>
+
+        <div class="word" id="word">
+            <span class="letter">W</span>
+            <span class="letter">O</span>
+            <span class="letter">R</span>
+            <span class="letter">D</span>
+            <span class="letter">W</span>
+            <span class="letter">O</span>
+            <span class="letter">R</span>
+            <span class="letter">D</span>
+        </div>
+
+        <div class="alphabet-container">
+            <div class="row">
+                <button class="alphabet">A</button>
+                <button class="alphabet">B</button>
+                <button class="alphabet">C</button>
+                <button class="alphabet">D</button>
+                <button class="alphabet">E</button>
+                <button class="alphabet">F</button>
+            </div>
+            <div class="row">
+                <button class="alphabet">G</button>
+                <button class="alphabet">H</button>
+                <button class="alphabet">I</button>
+                <button class="alphabet">J</button>
+                <button class="alphabet">K</button>
+                <button class="alphabet">L</button>
+            </div>
+            <div class="row">
+                <button class="alphabet">M</button>
+                <button class="alphabet">N</button>
+                <button class="alphabet">O</button>
+                <button class="alphabet">P</button>
+                <button class="alphabet">Q</button>
+                <button class="alphabet">R</button>
+            </div>
+            <div class="row">
+                <button class="alphabet">S</button>
+                <button class="alphabet">T</button>
+                <button class="alphabet">U</button>
+                <button class="alphabet">V</button>
+                <button class="alphabet">W</button>
+                <button class="alphabet">X</button>
+            </div>
+            <div class="row">
+                <button class="alphabet hide"></button>
+                <button class="alphabet hide"></button>
+                <button class="alphabet">Y</button>
+                <button class="alphabet">Z</button>
+                <button class="alphabet hide"></button>
+                <button class="alphabet hide"></button>
+            </div>
+        </div>
     </div>
 
     <!-- popup message -->
     <div class="popup-container" id="popup-container">
         <div class="popup">
-            <h2 class="final-msg">You won</h2>
+            <h2 class="final-msg"></h2>
             <button id="play-again">Play Again</button>
         </div>
     </div>
