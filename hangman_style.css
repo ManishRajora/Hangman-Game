@@ -3,7 +3,9 @@
 }
 
 body{
-    background-color: rgb(45, 45, 222);
+     background-image: linear-gradient(to bottom, blue, rgb(96, 96, 237))/*rgb(45, 45, 222)*/;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
     color: white;
     font-family: cursive;
     font-style: italic;
@@ -36,7 +38,7 @@ h1{
     stroke-linecap: round;
 }
 .figure-part{
-    display: block;
+    display: none;
 }
 
 .win-figure{
@@ -83,6 +85,7 @@ h1{
 }
 
 .alphabet{
+    cursor: pointer;
     height: 35px;
     width: 35px;
     background-color: rgba(10, 17, 56, 0.4);
@@ -99,6 +102,10 @@ h1{
 
 .alphabet:active{
     transform: scale(0.95);
+}
+
+.alphabet:focus{
+    outline: 0;
 }
 
 .popup-container{
@@ -120,6 +127,8 @@ h1{
     border-radius: 10px;
     width: 400px;
     box-shadow: 0 1px 5px 4px aqua;
+    animation-name: showpopup;
+    animation-duration: 0.3s;
 }
 
 .popup button{
@@ -153,4 +162,13 @@ h1{
 
 .notification-container p{
     margin: 0;
+}
+
+.notification-container.show{
+    transform: translateY(-50px);
+}
+
+@keyframes showpopup{
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
