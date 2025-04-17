@@ -8,10 +8,11 @@ const figure_part = document.querySelectorAll('.figure-part');
 const win_figure_part = document.querySelectorAll('.win_figure');
 const alphabet_btn = document.querySelectorAll('.alphabet');
 
-const word_genere = ['Animal', 'Horror'];
+const word_genere = ['Animal', 'Horror', 'Continent'];
 const words = {
     'Animal' : ['Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Monkey', 'Gorilla', 'Chimpanzee', 'Dog', 'Cat', 'Horse', 'Cow', 'Pig', 'Sheep', 'Goat', 'Seal', 'Fox', 'Wolf', 'Deer', 'Bear', 'Rabbit', 'Squirrel', 'Mouse', 'Beaver', 'Otter', 'Skunk', 'Raccoon', 'Kangaroo', 'Koala', 'Hippo', 'Rhino', 'Camel', 'Lama', 'Cheetah', 'Leopard', 'Jaguar', 'Puma', 'Hyena', 'Sloth', 'Bison', 'Buffalo', 'Hedgehog', 'Mole', 'Panda', 'Baboon', 'Platypus', 'Porcupine', 'Mongoose'],
     'Horror': ["scary", "monster", "ghost", "evil", "fear", "haunted", "creepy", "paranormal", "demon", "vampire", "zombie", "curse"],
+    'Continent' : ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'Australia', 'Antarctica']
 };
 
 let selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
@@ -48,7 +49,7 @@ function updateFigurePart(){
     // checking if lost
     if(wrong_letters.length === figure_part.length){
         setTimeout(() => {
-            final_msg.innerText = `Unfortunately You Lost 😭 \n The Word was {${selected_word}}`;
+            final_msg.innerText = `Unfortunately You Lost 😭 \n The Word was "${selected_word}"`;
             popup.style.display = 'flex';
         }, 300);
     }
