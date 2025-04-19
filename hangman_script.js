@@ -8,11 +8,16 @@ const figure_part = document.querySelectorAll('.figure-part');
 const win_figure_part = document.querySelectorAll('.win_figure');
 const alphabet_btn = document.querySelectorAll('.alphabet');
 
-const word_genere = ['Animal', 'Horror', 'Continent'];
+const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Tree', 'Electronics', 'Electricals'];
 const words = {
     'Animal' : ['Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Monkey', 'Gorilla', 'Chimpanzee', 'Dog', 'Cat', 'Horse', 'Cow', 'Pig', 'Sheep', 'Goat', 'Seal', 'Fox', 'Wolf', 'Deer', 'Bear', 'Rabbit', 'Squirrel', 'Mouse', 'Beaver', 'Otter', 'Skunk', 'Raccoon', 'Kangaroo', 'Koala', 'Hippo', 'Rhino', 'Camel', 'Lama', 'Cheetah', 'Leopard', 'Jaguar', 'Puma', 'Hyena', 'Sloth', 'Bison', 'Buffalo', 'Hedgehog', 'Mole', 'Panda', 'Baboon', 'Platypus', 'Porcupine', 'Mongoose'],
     'Horror': ["scary", "monster", "ghost", "evil", "fear", "haunted", "creepy", "paranormal", "demon", "vampire", "zombie", "curse"],
-    'Continent' : ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'Australia', 'Antarctica']
+    'Continent' : ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'Australia', 'Antarctica'],
+    "Fantasy": ["magic", "dragon", "elf", "sword", "kingdom", "quest", "sorcerer", "mythical", "artifact", "prophecy", "hero", "villain", "spell", "ancient", "forest", "castle", "enchantment", "destiny", "creature", "legend"],
+    'Bird' : ['Falcon', 'Sparrow', 'Robin', 'Blue Jay', 'Cardinal', 'Finch', 'Eagle', 'Hawk', 'Owl', 'Pigeon', 'Dove','Crow', 'Raven', 'Stork', 'Heron', 'Crane', 'Kingfisher', 'Woodpecker', 'Hummingbird', 'Swallow', 'Martin', 'Wren', 'Warbler', 'Thrush', 'Nightingale', 'Mockingbird', 'Canary', 'Parrot', 'Cockatoo', 'Macaw', 'Pelican', 'Seagull', 'Albatross', 'Penguin', 'Ostrich', 'Emu', 'Kiwi', 'Turkey', 'Duck', 'Goose', 'Swan', 'Pheasant', 'Quail', 'Partridge', 'Grouse', 'Peacock', 'Flamingo', 'Toucan', 'Jay', 'Magpie', 'Kite', 'Pelican'],
+    'Tree' : ['Banyan', 'Peepal', 'Neem', 'Mango', 'Sal', 'Teak', 'Sheesham', 'Deodar', 'Sandalwood', 'Rosewood', 'Tamarind', 'Jamun', 'Amaltas', 'Arjun', 'Bel', 'Amla', 'Kadamba', 'Semal', 'Shisham', 'Siris', 'Mahua', 'Khair', 'Palash', 'Gular', 'Babul', 'Bamboo', 'Casuarina', 'Chinar', 'Toon', 'Mulberry', 'Jackfruit', 'Guava', 'Lemon', 'Orange', 'Ashoka', 'Bakul', 'Champak', 'Kanchan', 'Kikar', 'Mahogany', 'Oak', 'Copperpod', 'Gulmohar'],
+    'Electronics' : ['Resistor', 'Capacitor', 'Inductor', 'Diode', 'Transistor', 'Microcontroller', 'Microprocessor', 'Sensor', 'Actuator', 'Amplifier', 'Oscillator', 'Filter', 'Rectifier', 'Inverter', 'Converter', 'Semiconductor', 'Display', 'LED', 'LCD', 'OLED', 'Speaker', 'Microphone', 'Antenna', 'Breadboard', 'Multimeter', 'Oscilloscope', 'Potentiometer', 'Thermistor', 'Photodiode', 'Transducer', 'Optocoupler'],
+    'Electricals' : ['Bulb', 'Fan', 'Refrigerator', 'Television', 'Smartphone', 'Laptop', 'Oven', 'Iron', 'Heater', 'AC', 'Toaster', 'Stove', 'Cooker', 'Hair Dryer', 'Adapter', 'Socket', 'Switch', 'MCB', 'Fuse', 'Inverter', 'Stabilizer', 'Remote', 'Dishwasher', 'Camera', 'Doorbell', 'Headphones', 'Earphones', 'Alarm Clock']
 };
 
 let selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
