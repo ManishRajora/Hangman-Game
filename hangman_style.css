@@ -27,7 +27,36 @@ h1{
     width: 100%;
     max-width: 800px;
     top: 0;
-    left: 30px;
+    left: 0;
+}
+
+.hint-container{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 10%;
+}
+
+.hint-container button{
+    margin-bottom: 20px;
+    border: 0;
+    border-radius: 5px;
+    font-size: large;
+    padding: 5px 10px;
+}
+
+.hint-container button:focus{
+    outline: 0;
+}
+
+.hint-container button:active{
+    transform: scale(0.8);
+}
+
+.definition-btn{
+    background-color: gold;
 }
 
 .figure-container{
@@ -44,19 +73,35 @@ h1{
     display: none;
 }
 
+.win-figure-arm-up{
+    display: none;
+}
+
+.win-figure-arm-down{
+    display: none;
+}
+
 .genere{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    max-width: fit-content;
+    padding: 10px;
     font-size: xx-large;
     display: flex;
-    position: absolute;
-    left: 20%;
-    bottom: -30px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    bottom: -15%;
+    transform: translateX(-50%);
 }
 
 .word{
     display: flex;
     position: absolute;
-    left: 40%;
-    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
 }
 
 .letter{
@@ -87,7 +132,7 @@ h1{
     cursor: pointer;
     height: 35px;
     width: 35px;
-    background-color: rgba(10, 17, 56, 0.4);
+    background-color: rgba(157, 162, 184, 0.4);
     color: white;
     font-size: large;
     border: 0;
@@ -105,6 +150,71 @@ h1{
 
 .alphabet:focus{
     outline: 0;
+}
+
+.score{
+    font-size: larger;
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 90%;
+}
+
+.score .current-score{
+    position: relative;
+    left: 0;
+    text-align: center;
+}
+
+.score .high-score{
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+.score1, .score2{
+    color: black;
+}
+
+.definition-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.definition{
+    background-color: rgb(27, 142, 224);
+    text-align: center;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 4px aqua;
+}
+
+.definition button{
+    cursor: pointer;
+    background-color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: rgb(27, 142, 224);
+    border: 0;
+    font-size: medium;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 2px blue;
+}
+
+.definition button:focus{
+    outline: 0;
+}
+
+.definition button:active{
+    transform: scale(0.9);
 }
 
 .popup-container{

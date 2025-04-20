@@ -5,19 +5,28 @@ const popup = document.getElementById('popup-container');
 const final_msg = document.getElementById('final-msg');
 const notification = document.getElementById('notification-container');
 const figure_part = document.querySelectorAll('.figure-part');
-const win_figure_part = document.querySelectorAll('.win_figure');
+const win_figure_part = document.querySelectorAll('.win-figure');
+const win_figure_arm_up = document.querySelectorAll('.win-figure-arm-up');
+const win_figure_arm_down = document.querySelectorAll('.win-figure-arm-down');
 const alphabet_btn = document.querySelectorAll('.alphabet');
+const current_score = document.getElementById('score1');
+const high_score = document.getElementById('score2');
+const definition_container = document.getElementById('definition-container');
+const hint_para = document.getElementById('hint-para');
+const definition_btn = document.getElementById('definition-btn');
+const letter_btn = document.getElementById('letter-btn');
+const close_hint_btn = document.getElementById('close-hint');
 
-const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Tree', 'Electronics', 'Electricals'];
+const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Tree', 'Electronics item', 'Daily use electric item'];
 const words = {
     'Animal' : ['Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Monkey', 'Gorilla', 'Chimpanzee', 'Dog', 'Cat', 'Horse', 'Cow', 'Pig', 'Sheep', 'Goat', 'Seal', 'Fox', 'Wolf', 'Deer', 'Bear', 'Rabbit', 'Squirrel', 'Mouse', 'Beaver', 'Otter', 'Skunk', 'Raccoon', 'Kangaroo', 'Koala', 'Hippo', 'Rhino', 'Camel', 'Lama', 'Cheetah', 'Leopard', 'Jaguar', 'Puma', 'Hyena', 'Sloth', 'Bison', 'Buffalo', 'Hedgehog', 'Mole', 'Panda', 'Baboon', 'Platypus', 'Porcupine', 'Mongoose'],
     'Horror': ["scary", "monster", "ghost", "evil", "fear", "haunted", "creepy", "paranormal", "demon", "vampire", "zombie", "curse"],
     'Continent' : ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'Australia', 'Antarctica'],
     "Fantasy": ["magic", "dragon", "elf", "sword", "kingdom", "quest", "sorcerer", "mythical", "artifact", "prophecy", "hero", "villain", "spell", "ancient", "forest", "castle", "enchantment", "destiny", "creature", "legend"],
-    'Bird' : ['Falcon', 'Sparrow', 'Robin', 'Blue Jay', 'Cardinal', 'Finch', 'Eagle', 'Hawk', 'Owl', 'Pigeon', 'Dove','Crow', 'Raven', 'Stork', 'Heron', 'Crane', 'Kingfisher', 'Woodpecker', 'Hummingbird', 'Swallow', 'Martin', 'Wren', 'Warbler', 'Thrush', 'Nightingale', 'Mockingbird', 'Canary', 'Parrot', 'Cockatoo', 'Macaw', 'Pelican', 'Seagull', 'Albatross', 'Penguin', 'Ostrich', 'Emu', 'Kiwi', 'Turkey', 'Duck', 'Goose', 'Swan', 'Pheasant', 'Quail', 'Partridge', 'Grouse', 'Peacock', 'Flamingo', 'Toucan', 'Jay', 'Magpie', 'Kite', 'Pelican'],
+    'Bird' : ['Falcon', 'Sparrow', 'Robin', 'Cardinal', 'Finch', 'Eagle', 'Hawk', 'Owl', 'Pigeon', 'Dove','Crow', 'Raven', 'Stork', 'Heron', 'Crane', 'Kingfisher', 'Woodpecker', 'Hummingbird', 'Swallow', 'Martin', 'Wren', 'Warbler', 'Thrush', 'Nightingale', 'Mockingbird', 'Canary', 'Parrot', 'Cockatoo', 'Macaw', 'Pelican', 'Seagull', 'Albatross', 'Penguin', 'Ostrich', 'Emu', 'Kiwi', 'Turkey', 'Duck', 'Goose', 'Swan', 'Pheasant', 'Quail', 'Partridge', 'Grouse', 'Peacock', 'Flamingo', 'Toucan', 'Jay', 'Magpie', 'Kite', 'Pelican'],
     'Tree' : ['Banyan', 'Peepal', 'Neem', 'Mango', 'Sal', 'Teak', 'Sheesham', 'Deodar', 'Sandalwood', 'Rosewood', 'Tamarind', 'Jamun', 'Amaltas', 'Arjun', 'Bel', 'Amla', 'Kadamba', 'Semal', 'Shisham', 'Siris', 'Mahua', 'Khair', 'Palash', 'Gular', 'Babul', 'Bamboo', 'Casuarina', 'Chinar', 'Toon', 'Mulberry', 'Jackfruit', 'Guava', 'Lemon', 'Orange', 'Ashoka', 'Bakul', 'Champak', 'Kanchan', 'Kikar', 'Mahogany', 'Oak', 'Copperpod', 'Gulmohar'],
-    'Electronics' : ['Resistor', 'Capacitor', 'Inductor', 'Diode', 'Transistor', 'Microcontroller', 'Microprocessor', 'Sensor', 'Actuator', 'Amplifier', 'Oscillator', 'Filter', 'Rectifier', 'Inverter', 'Converter', 'Semiconductor', 'Display', 'LED', 'LCD', 'OLED', 'Speaker', 'Microphone', 'Antenna', 'Breadboard', 'Multimeter', 'Oscilloscope', 'Potentiometer', 'Thermistor', 'Photodiode', 'Transducer', 'Optocoupler'],
-    'Electricals' : ['Bulb', 'Fan', 'Refrigerator', 'Television', 'Smartphone', 'Laptop', 'Oven', 'Iron', 'Heater', 'AC', 'Toaster', 'Stove', 'Cooker', 'Hair Dryer', 'Adapter', 'Socket', 'Switch', 'MCB', 'Fuse', 'Inverter', 'Stabilizer', 'Remote', 'Dishwasher', 'Camera', 'Doorbell', 'Headphones', 'Earphones', 'Alarm Clock']
+    'Electronics item' : ['Resistor', 'Capacitor', 'Inductor', 'Diode', 'Transistor', 'Microcontroller', 'Microprocessor', 'Sensor', 'Actuator', 'Amplifier', 'Oscillator', 'Filter', 'Rectifier', 'Inverter', 'Converter', 'Semiconductor', 'Display', 'LED', 'LCD', 'OLED', 'Speaker', 'Microphone', 'Antenna', 'Breadboard', 'Multimeter', 'Oscilloscope', 'Potentiometer', 'Thermistor', 'Photodiode', 'Transducer', 'Optocoupler'],
+    'Daily use electric item' : ['Bulb', 'Fan', 'Refrigerator', 'Television', 'Smartphone', 'Laptop', 'Oven', 'Iron', 'Heater', 'AC', 'Toaster', 'Stove', 'Cooker', 'HairDryer', 'Adapter', 'Socket', 'Switch', 'MCB', 'Fuse', 'Inverter', 'Stabilizer', 'Remote', 'Dishwasher', 'Camera', 'Doorbell', 'Headphones', 'Earphones', 'AlarmClock']
 };
 
 let selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
@@ -26,17 +35,67 @@ let selected_word = words[selected_genere][Math.floor(Math.random() * words[sele
 const correct_letters = [];
 const wrong_letters = [];
 
+let curr_score = 0;
+let hi_score = 0;
+
+getDefinition();
+// getting data from dictionary API
+async function getDefinition(){
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selected_word}`);
+    const data = await response.json();
+
+    if(data.title){
+        hint_para.innerText = 'No hint required';
+    }else{
+        const req_data = data['0'].meanings;
+        const definition = req_data['0'].definitions['0'].definition;
+        console.log(definition);
+        hint_para.innerText = definition;
+    }
+}
+
 // show hidden word
 function displayWord(){
     wordEl.innerHTML = `${selected_word.split('').map(letter => `<span class='letter'>${correct_letters.includes(letter) ? letter : ''}</span>`).join('')}`;
-    genere.innerText = `${selected_genere}:`;
+    genere.innerText = `${selected_genere}`;
 
     const inner_word = wordEl.innerText.replace(/\n/g, '');
     if(inner_word === selected_word){
+        figure_part.forEach(part => {
+            part.style.display = 'none';
+        });
+        win_figure_part.forEach(part => {
+            part.style.display = 'block';
+        });
+
+        win_figure_arm_up.forEach(part => {
+            part.style.display = 'block';
+        });
+
+        let arm_up = false;
+        setInterval(() => {
+            if (arm_up) {
+                win_figure_arm_up.forEach(part => {
+                    part.style.display = 'block';
+                });
+                win_figure_arm_down.forEach(part => {
+                    part.style.display = 'none';
+                });
+            } else {
+                win_figure_arm_up.forEach(part => {
+                    part.style.display = 'none';
+                });
+                win_figure_arm_down.forEach(part => {
+                    part.style.display = 'block';
+                });
+            }
+            arm_up = !arm_up;
+        }, 400);
+
         setTimeout(() => {
             final_msg.innerText = 'Congratulations! You Won 😄';
             popup.style.display = 'flex';
-        }, 100);
+        }, 2000);
     }
 }
 
@@ -92,6 +151,16 @@ alphabet_btn.forEach((button) => {
             }
         }
     });
+});
+
+// show hint -> definition
+definition_btn.addEventListener('click', function(){
+    definition_container.style.display = 'flex';
+});
+
+// hide hint 
+close_hint_btn.addEventListener('click', function(){
+    definition_container.style.display = 'none';
 });
 
 playAgainBtn.addEventListener('click', function(){

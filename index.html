@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="./Assets/H.gif">
     <link rel="stylesheet" href="hangman_style.css">
     <title>Hangman</title>
@@ -11,13 +12,21 @@
     <h1>Hangman</h1>
     <p>Guess the word - Enter a letter</p>
 
+    <div class="hint-container">
+        <button class="definition-btn" id="definition-btn"><i class="fa-regular fa-lightbulb fa-2x"></i></button>
+        <button class="letter-btn" id="letter-btn"><i class="fa-solid fa-question fa-2x"></i></button>
+    </div>
+
     <div class="game-container">
         <svg height="350" width="300" class="figure-container">
             <!-- Stand Rods -->
             <line x1="60" y1="20" x2="200" y2="20"></line>
+            <line x1="60" y1="60" x2="100" y2="20"></line>
             <line x1="60" y1="20" x2="60" y2="300"></line>
-            <line x1="200" y1="20" x2="200" y2="60"></line>
-            <line x1="5" y1="300" x2="120" y2="300"></line>
+            <line x1="200" y1="20" x2="200" y2="60" class="figure-part"></line>
+            <line x1="5" y1="300" x2="290" y2="300"></line>
+            <line x1="20" y1="300" x2="60" y2="250"></line>
+            <line x1="60" y1="250" x2="100" y2="300"></line>
 
             <!-- head -->
             <circle cx="175" cy="80" r="30" fill="white" class="figure-part"></circle>
@@ -41,9 +50,13 @@
             <!-- body -->
             <line x1="200" y1="150" x2="200" y2="250" class="win-figure"></line>
 
-            <!-- Arms -->
-            <line x1="160" y1="170" x2="200" y2="200" class="win-figure"></line>
-            <line x1="200" y1="200" x2="240" y2="170" class="win-figure"></line>
+            <!-- Arms up -->
+            <line x1="160" y1="170" x2="200" y2="200" class="win-figure-arm-up"></line>
+            <line x1="200" y1="200" x2="240" y2="170" class="win-figure-arm-up"></line>
+
+            <!-- Arms down -->
+            <line x1="160" y1="230" x2="200" y2="200" class="win-figure-arm-down"></line>
+            <line x1="200" y1="200" x2="240" y2="230" class="win-figure-arm-down"></line>
 
             <!-- legs -->
             <line x1="160" y1="290" x2="200" y2="250" class="win-figure"></line>
@@ -95,6 +108,23 @@
                 <button class="alphabet hide"></button>
                 <button class="alphabet hide"></button>
             </div>
+        </div>
+    </div>
+
+    <div class="score">
+        <div class="current-score">
+            <h3>Current Score: <br><span class="score1" id="score1">0</span></h3>
+        </div>
+        <div class="high-score">
+            <h3>High Score: <br><span class="score2" id="score2">0</span></h3>
+        </div>
+    </div>
+
+    <!-- Definition Hint -->
+    <div class="definition-container" id="definition-container">
+        <div class="definition">
+            <h2 id="hint-para"></h2>
+            <button id="close-hint">Close</button>
         </div>
     </div>
 
