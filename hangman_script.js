@@ -16,6 +16,7 @@ const hint_para = document.getElementById('hint-para');
 const definition_btn = document.getElementById('definition-btn');
 const letter_btn = document.getElementById('letter-btn');
 const close_hint_btn = document.getElementById('close-hint');
+const exitBtn = document.getElementById('exit');
 
 const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item', 'Daily use electric item', 'Action Movie', 'Indian Comedy Movie', 'Horror Movie', 'Fantasy Movie'];
 const words = {
@@ -38,8 +39,8 @@ let selected_word = words[selected_genere][Math.floor(Math.random() * words[sele
 const correct_letters = [];
 const wrong_letters = [];
 
-let curr_score = 0;
-let hi_score = localStorage.getItem('high_score');
+let curr_score = parseInt(localStorage.getItem('current_score')) || 0;
+let hi_score = localStorage.getItem('high_score') || 0;
 
 displayScores();
 
@@ -54,7 +55,6 @@ async function getDefinition(){
     }else{
         const req_data = data['0'].meanings;
         const definition = req_data['0'].definitions['0'].definition;
-        console.log(definition);
         hint_para.innerText = definition;
     }
 }
@@ -63,6 +63,7 @@ async function getDefinition(){
 function updateCurrentScore(points){
     curr_score += points;
     current_score.innerText = curr_score;
+    localStorage.setItem('current_score', curr_score);
 }
 
 // update high score and put in local storage
@@ -142,6 +143,7 @@ function updateFigurePart(){
 
     // checking if lost
     if(wrong_letters.length === figure_part.length){
+        localStorage.removeItem('current_score');
         setTimeout(() => {
             final_msg.innerText = `Unfortunately You Lost 😭 \n The Word was "${selected_word}"`;
             popup.style.display = 'flex';
@@ -185,6 +187,7 @@ alphabet_btn.forEach((button) => {
 
 // show hint -> definition
 definition_btn.addEventListener('click', function(){
+    updateCurrentScore(-5);
     definition_container.style.display = 'flex';
 });
 
@@ -193,43 +196,13 @@ close_hint_btn.addEventListener('click', function(){
     definition_container.style.display = 'none';
 });
 
+// play again
 playAgainBtn.addEventListener('click', function(){
-    // empty the arrays
-    correct_letters.splice(0);
-    wrong_letters.splice(0);
+    window.location.reload();
+});
 
-    // select new word
-    selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
-    selected_word = words[selected_genere][Math.floor(Math.random() * words[selected_genere].length)].toUpperCase();
-    displayWord();
-
-    // hide popup
-    popup.style.display = 'none';
-
-    // hide figure parts
-    figure_part.forEach(part => {
-        part.style.display = 'none';
-    });
-    win_figure_part.forEach(part => {
-        part.style.display = 'none';
-    });
-    win_figure_arm_up.forEach(part => {
-        part.style.display = 'none';
-    });
-    win_figure_arm_down.forEach(part => {
-        part.style.display = 'none';
-    });
-
-    // clear the interval
-    if(interval_ID){
-        clearInterval(interval_ID);
-        interval_ID = null;
-    }
-
-    // setting all alphabet btn to their original condition
-    alphabet_btn.forEach(button => {
-        button.style.backgroundColor = 'rgba(157, 162, 184, 0.4)';
-    });
+exitBtn.addEventListener('click', function(){
+    window.close();
 });
 
 displayWord();

@@ -241,6 +241,14 @@ h1{
     animation-duration: 0.3s;
 }
 
+#play-again{
+    margin-right: 10px;
+}
+
+#exit{
+    margin-left: 10px;
+}
+
 .popup button{
     cursor: pointer;
     background-color: white;
