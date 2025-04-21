@@ -17,7 +17,7 @@ const definition_btn = document.getElementById('definition-btn');
 const letter_btn = document.getElementById('letter-btn');
 const close_hint_btn = document.getElementById('close-hint');
 
-const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item', 'Daily use electric item'];
+const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item', 'Daily use electric item', 'Action Movie', 'Indian Comedy Movie', 'Horror Movie', 'Fantasy Movie'];
 const words = {
     'Animal' : ['Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Monkey', 'Gorilla', 'Chimpanzee', 'Dog', 'Cat', 'Horse', 'Cow', 'Pig', 'Sheep', 'Goat', 'Seal', 'Fox', 'Wolf', 'Deer', 'Bear', 'Rabbit', 'Squirrel', 'Mouse', 'Beaver', 'Otter', 'Skunk', 'Raccoon', 'Kangaroo', 'Koala', 'Hippo', 'Rhino', 'Camel', 'Lama', 'Cheetah', 'Leopard', 'Jaguar', 'Puma', 'Hyena', 'Sloth', 'Bison', 'Buffalo', 'Hedgehog', 'Mole', 'Panda', 'Baboon', 'Platypus', 'Porcupine', 'Mongoose'],
     'Horror': ["scary", "monster", "ghost", "evil", "fear", "haunted", "creepy", "paranormal", "demon", "vampire", "zombie", "curse"],
@@ -25,7 +25,11 @@ const words = {
     "Fantasy": ["magic", "dragon", "elf", "sword", "kingdom", "quest", "sorcerer", "mythical", "artifact", "prophecy", "hero", "villain", "spell", "ancient", "forest", "castle", "enchantment", "destiny", "creature", "legend"],
     'Bird' : ['Falcon', 'Sparrow', 'Robin', 'Cardinal', 'Finch', 'Eagle', 'Hawk', 'Owl', 'Pigeon', 'Dove','Crow', 'Raven', 'Stork', 'Heron', 'Crane', 'Kingfisher', 'Woodpecker', 'Hummingbird', 'Swallow', 'Martin', 'Wren', 'Warbler', 'Thrush', 'Nightingale', 'Mockingbird', 'Canary', 'Parrot', 'Cockatoo', 'Macaw', 'Pelican', 'Seagull', 'Albatross', 'Penguin', 'Ostrich', 'Emu', 'Kiwi', 'Turkey', 'Duck', 'Goose', 'Swan', 'Pheasant', 'Quail', 'Partridge', 'Grouse', 'Peacock', 'Flamingo', 'Toucan', 'Jay', 'Magpie', 'Kite', 'Pelican'],
     'Electronics item' : ['Resistor', 'Capacitor', 'Inductor', 'Diode', 'Transistor', 'Microcontroller', 'Microprocessor', 'Sensor', 'Actuator', 'Amplifier', 'Oscillator', 'Filter', 'Rectifier', 'Inverter', 'Converter', 'Semiconductor', 'Display', 'LED', 'LCD', 'OLED', 'Speaker', 'Microphone', 'Antenna', 'Breadboard', 'Multimeter', 'Oscilloscope', 'Potentiometer', 'Thermistor', 'Photodiode', 'Transducer', 'Optocoupler'],
-    'Daily use electric item' : ['Bulb', 'Fan', 'Refrigerator', 'Television', 'Smartphone', 'Laptop', 'Oven', 'Iron', 'Heater', 'AC', 'Toaster', 'Stove', 'Cooker', 'HairDryer', 'Adapter', 'Socket', 'Switch', 'MCB', 'Fuse', 'Inverter', 'Stabilizer', 'Remote', 'Dishwasher', 'Camera', 'Doorbell', 'Headphones', 'Earphones', 'AlarmClock']
+    'Daily use electric item' : ['Bulb', 'Fan', 'Refrigerator', 'Television', 'Smartphone', 'Laptop', 'Oven', 'Iron', 'Heater', 'AC', 'Toaster', 'Stove', 'Cooker', 'HairDryer', 'Adapter', 'Socket', 'Switch', 'MCB', 'Fuse', 'Inverter', 'Stabilizer', 'Remote', 'Dishwasher', 'Camera', 'Doorbell', 'Headphones', 'Earphones', 'AlarmClock'],
+    'Action Movie': ['Rambo', 'Predator', 'Commando', 'RoboCop', 'Speed', 'Taken', 'Avengers', 'Skyfall', 'Dredd', 'Run', 'Batman', 'Terminator', 'Superman', 'Joker', 'Flash', 'Deadpool', 'Antman', 'Hulk', 'Ironman', 'CaptainAmerica', 'BlackWidow', 'Hawkeye', 'Spiderman', 'Wolverine', 'WonderWoman', 'KGF', 'Salaar', 'War', 'IndependenceDay', 'Pushpa', 'RRR', 'StarWars', 'Mandalorian', 'Loki', 'Thor', 'Krrish'],
+    'Indian Comedy Movie' : ['Welcome', 'Housefull', 'Dhamaal', 'Golmaal', 'Hungama', 'Dhol', 'Partner', 'NoEntry', 'PK', 'DreamGirl', 'Stree', 'HeraPheri', 'Hulchul', 'Ishq', 'Ready', 'BhoolBhulaiyaa', 'NoProblem'],
+    'Horror Movie' : ['Annabelle', 'Insidious', 'Exorcism', 'TheRing', 'Conjuring', 'EvilDead'],
+    'Fantasy Movie' : ['HarryPotter', 'Zathura', 'Jumanji', 'HellBoy', 'Ghostbusters', 'Avatar', 'Hobbit']
 };
 
 let selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
