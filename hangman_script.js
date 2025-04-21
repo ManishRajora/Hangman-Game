@@ -39,7 +39,9 @@ const correct_letters = [];
 const wrong_letters = [];
 
 let curr_score = 0;
-let hi_score = 0;
+let hi_score = localStorage.getItem('high_score');
+
+displayScores();
 
 getDefinition();
 // getting data from dictionary API
@@ -57,6 +59,28 @@ async function getDefinition(){
     }
 }
 
+// update current score
+function updateCurrentScore(points){
+    curr_score += points;
+    current_score.innerText = curr_score;
+}
+
+// update high score and put in local storage
+function updateHighScore(){
+    if(curr_score > hi_score){
+        hi_score = curr_score;
+        localStorage.setItem('high_score', hi_score);
+    }
+    high_score.innerText = hi_score;
+}
+
+// display Scores
+function displayScores(){
+    current_score.innerText = curr_score;
+    high_score.innerText = hi_score;
+}
+
+let interval_ID;   // declare variable to store interval ID to clear interval in playAgain event
 // show hidden word
 function displayWord(){
     wordEl.innerHTML = `${selected_word.split('').map(letter => `<span class='letter'>${correct_letters.includes(letter) ? letter : ''}</span>`).join('')}`;
@@ -76,7 +100,7 @@ function displayWord(){
         });
 
         let arm_up = false;
-        setInterval(() => {
+        interval_ID = setInterval(() => {
             if (arm_up) {
                 win_figure_arm_up.forEach(part => {
                     part.style.display = 'block';
@@ -94,6 +118,9 @@ function displayWord(){
             }
             arm_up = !arm_up;
         }, 400);
+
+        updateCurrentScore(10);  // award of 10 points on winning
+        updateHighScore();
 
         setTimeout(() => {
             final_msg.innerText = 'Congratulations! You Won 😄';
@@ -167,7 +194,42 @@ close_hint_btn.addEventListener('click', function(){
 });
 
 playAgainBtn.addEventListener('click', function(){
-    window.location.reload();
+    // empty the arrays
+    correct_letters.splice(0);
+    wrong_letters.splice(0);
+
+    // select new word
+    selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
+    selected_word = words[selected_genere][Math.floor(Math.random() * words[selected_genere].length)].toUpperCase();
+    displayWord();
+
+    // hide popup
+    popup.style.display = 'none';
+
+    // hide figure parts
+    figure_part.forEach(part => {
+        part.style.display = 'none';
+    });
+    win_figure_part.forEach(part => {
+        part.style.display = 'none';
+    });
+    win_figure_arm_up.forEach(part => {
+        part.style.display = 'none';
+    });
+    win_figure_arm_down.forEach(part => {
+        part.style.display = 'none';
+    });
+
+    // clear the interval
+    if(interval_ID){
+        clearInterval(interval_ID);
+        interval_ID = null;
+    }
+
+    // setting all alphabet btn to their original condition
+    alphabet_btn.forEach(button => {
+        button.style.backgroundColor = 'rgba(157, 162, 184, 0.4)';
+    });
 });
 
 displayWord();
