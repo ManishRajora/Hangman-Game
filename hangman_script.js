@@ -16,7 +16,10 @@ const hint_para = document.getElementById('hint-para');
 const definition_btn = document.getElementById('definition-btn');
 const letter_btn = document.getElementById('letter-btn');
 const close_hint_btn = document.getElementById('close-hint');
-const exitBtn = document.getElementById('exit');
+const reset_warning = document.getElementById('reset-warning');
+const reset_btn = document.getElementById('reset-btn');
+const reset_yes = document.getElementById('reset-yes');
+const reset_no = document.getElementById('reset-no');
 
 const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item', 'Daily use electric item', 'Action Movie', 'Indian Comedy Movie', 'Horror Movie', 'Fantasy Movie'];
 const words = {
@@ -47,7 +50,7 @@ displayScores();
 getDefinition();
 // getting data from dictionary API
 async function getDefinition(){
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selected_word}`);
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selected_word.toLowerCase()}`);
     const data = await response.json();
 
     if(data.title){
@@ -196,13 +199,24 @@ close_hint_btn.addEventListener('click', function(){
     definition_container.style.display = 'none';
 });
 
-// play again
-playAgainBtn.addEventListener('click', function(){
+// handling reset event
+reset_btn.addEventListener('click', function(){
+    reset_warning.style.display = 'flex';
+});
+
+reset_yes.addEventListener('click', function(){
+    localStorage.clear();
+    reset_warning.style.display = 'none';
     window.location.reload();
 });
 
-exitBtn.addEventListener('click', function(){
-    window.close();
+reset_no.addEventListener('click', function(){
+    reset_warning.style.display = 'none';
+});
+
+// play again
+playAgainBtn.addEventListener('click', function(){
+    window.location.reload();
 });
 
 displayWord();

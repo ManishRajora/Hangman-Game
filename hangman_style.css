@@ -60,6 +60,32 @@ h1{
     background-color: gold;
 }
 
+.reset-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.reset-container button{
+    cursor: pointer;
+    background-color: rgb(228, 86, 86);
+    border: 0;
+    border-radius: 5px;
+    font-size: larger;
+    padding: 5px 10px;
+}
+
+.reset-container button:focus{
+    outline: 0;
+}
+
+.reset-container button:active{
+    transform: scale(0.8);
+}
+
 .figure-container{
     fill: transparent;
     stroke: white;
@@ -245,10 +271,6 @@ h1{
     margin-right: 10px;
 }
 
-#exit{
-    margin-left: 10px;
-}
-
 .popup button{
     cursor: pointer;
     background-color: white;
@@ -266,6 +288,51 @@ h1{
 }
 
 .popup button:active{
+    transform: scale(0.9);
+}
+
+.reset-warning{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.warning{
+    background-color: rgb(27, 142, 224);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 1px 5px 4px aqua;
+    animation-name: showpopup;
+    animation-duration: 0.3s;
+}
+
+.warning button{
+    cursor: pointer;
+    background-color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: rgb(27, 142, 224);
+    border: 0;
+    font-size: medium;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 2px blue;
+}
+
+.warning button:focus{
+    outline: 0;
+}
+
+.warning button:active{
     transform: scale(0.9);
 }
 

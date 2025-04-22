@@ -13,8 +13,12 @@
     <p>Guess the word - Enter a letter</p>
 
     <div class="hint-container">
-        <button class="definition-btn" id="definition-btn"><i class="fa-regular fa-lightbulb fa-2x"></i></button>
-        <button class="letter-btn" id="letter-btn"><i class="fa-solid fa-question fa-2x"></i></button>
+        <button class="definition-btn" id="definition-btn" title="-5 points"><i class="fa-regular fa-lightbulb fa-2x"></i></button>
+        <button class="letter-btn" id="letter-btn" title="-10 points"><i class="fa-solid fa-question fa-2x"></i></button>
+    </div>
+
+    <div class="reset-container">
+        <button id="reset-btn">Reset</button>
     </div>
 
     <div class="game-container">
@@ -133,7 +137,15 @@
         <div class="popup">
             <h2 id="final-msg"></h2>
             <button id="play-again">Play Again</button>
-            <button id="exit">Exit</button>
+        </div>
+    </div>
+
+    <!-- reset warning container -->
+    <div class="reset-warning" id="reset-warning">
+        <div class="warning">
+            <h2>Your progress will be clear</h2>
+            <button id="reset-yes">Yes</button>
+            <button id="reset-no">No</button>
         </div>
     </div>
 
