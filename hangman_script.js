@@ -14,14 +14,15 @@ const high_score = document.getElementById('score2');
 const definition_container = document.getElementById('definition-container');
 const hint_para = document.getElementById('hint-para');
 const definition_btn = document.getElementById('definition-btn');
-const letter_btn = document.getElementById('letter-btn');
+const help_btn = document.getElementById('help-btn');
+const skip_btn = document.getElementById('skip-btn');
 const close_hint_btn = document.getElementById('close-hint');
 const reset_warning = document.getElementById('reset-warning');
 const reset_btn = document.getElementById('reset-btn');
 const reset_yes = document.getElementById('reset-yes');
 const reset_no = document.getElementById('reset-no');
 
-const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item', 'Daily use electric item', 'Action Movie', 'Indian Comedy Movie', 'Horror Movie', 'Fantasy Movie'];
+const word_genere = ['Animal', 'Horror', 'Continent', 'Fantasy', 'Bird', 'Electronics item','Kitchen Items', 'Daily use electric item','Spices', 'Action Movie', 'Car Manufacturer','Bike Manufacturer', 'Indian Comedy Movie', 'Horror Movie', 'Fantasy Movie'];
 const words = {
     'Animal' : ['Lion', 'Tiger', 'Elephant', 'Giraffe', 'Zebra', 'Monkey', 'Gorilla', 'Chimpanzee', 'Dog', 'Cat', 'Horse', 'Cow', 'Pig', 'Sheep', 'Goat', 'Seal', 'Fox', 'Wolf', 'Deer', 'Bear', 'Rabbit', 'Squirrel', 'Mouse', 'Beaver', 'Otter', 'Skunk', 'Raccoon', 'Kangaroo', 'Koala', 'Hippo', 'Rhino', 'Camel', 'Lama', 'Cheetah', 'Leopard', 'Jaguar', 'Puma', 'Hyena', 'Sloth', 'Bison', 'Buffalo', 'Hedgehog', 'Mole', 'Panda', 'Baboon', 'Platypus', 'Porcupine', 'Mongoose'],
     'Horror': ["scary", "monster", "ghost", "evil", "fear", "haunted", "creepy", "paranormal", "demon", "vampire", "zombie", "curse"],
@@ -33,7 +34,11 @@ const words = {
     'Action Movie': ['Rambo', 'Predator', 'Commando', 'RoboCop', 'Speed', 'Taken', 'Avengers', 'Skyfall', 'Dredd', 'Run', 'Batman', 'Terminator', 'Superman', 'Joker', 'Flash', 'Deadpool', 'Antman', 'Hulk', 'Ironman', 'CaptainAmerica', 'BlackWidow', 'Hawkeye', 'Spiderman', 'Wolverine', 'WonderWoman', 'KGF', 'Salaar', 'War', 'IndependenceDay', 'Pushpa', 'RRR', 'StarWars', 'Mandalorian', 'Loki', 'Thor', 'Krrish'],
     'Indian Comedy Movie' : ['Welcome', 'Housefull', 'Dhamaal', 'Golmaal', 'Hungama', 'Dhol', 'Partner', 'NoEntry', 'PK', 'DreamGirl', 'Stree', 'HeraPheri', 'Hulchul', 'Ishq', 'Ready', 'BhoolBhulaiyaa', 'NoProblem'],
     'Horror Movie' : ['Annabelle', 'Insidious', 'Exorcism', 'TheRing', 'Conjuring', 'EvilDead'],
-    'Fantasy Movie' : ['HarryPotter', 'Zathura', 'Jumanji', 'HellBoy', 'Ghostbusters', 'Avatar', 'Hobbit']
+    'Fantasy Movie' : ['HarryPotter', 'Zathura', 'Jumanji', 'HellBoy', 'Ghostbusters', 'Avatar', 'Hobbit'],
+    'Kitchen Items' : ['Pot', 'Pan', 'Spoon', 'Fork', 'Knife', 'Plate', 'Bowl', 'Cup', 'Glass', 'Mug', 'Oven', 'Stove', 'Sink', 'Toaster', 'Microwave', 'Kettle', 'Blender', 'CuttingBoard', 'Peeler', 'Grater', 'CanOpener', 'Spatula', 'Ladle', 'Tongs', 'Whisk', 'Colander', 'MixingBowl', 'Sponge', 'Towel', 'Napkin', 'Apron'],
+    'Spices' : ['Salt', 'Pepper', 'Cumin', 'Ginger', 'Nutmeg', 'Clove', 'Basil', 'Thyme', 'Rosemary', 'Saffron', 'Vanilla', 'Anise', 'Caraway', 'Mace', 'Turmeric', 'Paprika', 'Cardamom', 'Coriander', 'Mustard', 'Fenugreek', 'Allspice', 'Mint'],
+    'Car Manufacturer' : ['Toyota', 'Volkswagen', 'Stellantis', 'Mercedes', 'Ford', 'GeneralMotors', 'Honda', 'Tesla', 'Nissan', 'Hyundai', 'BMW', 'Renault', 'Subaru', 'Mazda', 'Kia', 'Suzuki', 'Porsche', 'Volvo', 'Jaguar', 'Fiat', 'Audi', 'Lexus', 'Infiniti', 'Buick', 'Cadillac', 'Chrysler', 'Dodge', 'Citroen', 'Isuzu', 'Mitsubishi', 'Tata', 'Mahindra', 'Maruti' ,'Force', 'LandRover'],
+    'Bike Manufacturer' : ['Hero', 'Bajaj', 'TVS', 'RoyalEnfield', 'Ola', 'Ather', 'Honda', 'Yamaha', 'Suzuki', 'Kawasaki', 'KTM', 'Ducati', 'Triumph', 'Norton', 'Aprilia', 'Piaggio', 'Benelli', 'MotoGuzzi', 'MVAgusta']
 };
 
 let selected_genere = word_genere[Math.floor(Math.random() * word_genere.length)];
@@ -52,6 +57,7 @@ getDefinition();
 async function getDefinition(){
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selected_word.toLowerCase()}`);
     const data = await response.json();
+    console.log(data);
 
     if(data.title){
         hint_para.innerText = 'No hint required';
@@ -60,6 +66,15 @@ async function getDefinition(){
         const definition = req_data['0'].definitions['0'].definition;
         hint_para.innerText = definition;
     }
+}
+
+// getting help (show the selected word for very short amount of time)
+function getHelp(){
+    updateCurrentScore(-100);
+    wordEl.innerHTML = `${selected_word.split('').map(letter => `<span class='letter'>${letter}</span>`).join('')}`;
+    setTimeout(() => {
+        displayWord();
+    }, 50);
 }
 
 // update current score
@@ -197,6 +212,15 @@ definition_btn.addEventListener('click', function(){
 // hide hint 
 close_hint_btn.addEventListener('click', function(){
     definition_container.style.display = 'none';
+});
+
+// handling help event
+help_btn.addEventListener('click', getHelp);
+
+// handlink skip event
+skip_btn.addEventListener('click', function(){
+    updateCurrentScore(-20);
+    window.location.reload();
 });
 
 // handling reset event
