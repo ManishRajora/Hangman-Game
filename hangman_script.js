@@ -57,7 +57,6 @@ getDefinition();
 async function getDefinition(){
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selected_word.toLowerCase()}`);
     const data = await response.json();
-    console.log(data);
 
     if(data.title){
         hint_para.innerText = 'No hint required';
@@ -70,7 +69,7 @@ async function getDefinition(){
 
 // getting help (show the selected word for very short amount of time)
 function getHelp(){
-    updateCurrentScore(-100);
+    updateCurrentScore(selected_word.length * (-2));
     wordEl.innerHTML = `${selected_word.split('').map(letter => `<span class='letter'>${letter}</span>`).join('')}`;
     setTimeout(() => {
         displayWord();
@@ -219,7 +218,7 @@ help_btn.addEventListener('click', getHelp);
 
 // handlink skip event
 skip_btn.addEventListener('click', function(){
-    updateCurrentScore(-20);
+    updateCurrentScore(selected_word.length * (-1));
     window.location.reload();
 });
 
