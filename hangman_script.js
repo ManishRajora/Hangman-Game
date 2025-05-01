@@ -137,7 +137,7 @@ function displayWord(){
             arm_up = !arm_up;
         }, 400);
 
-        updateCurrentScore(10);  // award of 10 points on winning
+        updateCurrentScore(selected_word.length);  // award of 10 points on winning
         updateHighScore();
 
         setTimeout(() => {
