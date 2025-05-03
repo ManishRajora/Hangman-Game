@@ -3,7 +3,7 @@
 }
 
 body{
-     background-image: linear-gradient(to bottom, blue, rgb(96, 96, 237))/*rgb(45, 45, 222)*/;
+    background-image: linear-gradient(to bottom, blue, rgb(96, 96, 237))/*rgb(45, 45, 222)*/;
     background-repeat: no-repeat;
     background-attachment: fixed; 
     color: white;
